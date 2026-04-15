@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Analysis — Supply Chain Risk Analysis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="logo">Supply Chain <span>Risk Analysis</span></div>
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="shipments.html">Shipments</a>
+            <a href="risk.html" class="active">Risk Analysis</a>
+            <a href="add_shipment.html">Add Shipment</a>
+        </nav>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="page-header">
+            <h1>Risk Analysis</h1>
+            <p>High-risk shipments and delay rankings using window functions</p>
+        </div>
+
+        <!-- High Risk Shipments -->
+        <div class="table-card">
+            <h2>High-Risk Shipments (Delay &gt; 24 Hours)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Carrier</th>
+                        <th>Cargo</th>
+                        <th>Departure</th>
+                        <th>Expected Arrival</th>
+                        <th>Actual Arrival</th>
+                        <th>Delay</th>
+                        <th>Distance</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="highrisk-tbody">
+                    <tr><td colspan="9" class="loading">Loading high-risk shipments...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Above Average Delay -->
+        <div class="table-card">
+            <h2>Shipments with Above-Average Delay</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Route</th>
+                        <th>Carrier</th>
+                        <th>Cargo</th>
+                        <th>Departure</th>
+                        <th>Actual Arrival</th>
+                        <th>Delay</th>
+                    </tr>
+                </thead>
+                <tbody id="aboveavg-tbody">
+                    <tr><td colspan="7" class="loading">Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Weather Risk Correlation -->
+        <div class="table-card">
+            <h2>Weather and Delay Correlation</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Route</th>
+                        <th>Carrier</th>
+                        <th>Departure</th>
+                        <th>Delay</th>
+                        <th>Weather Event</th>
+                        <th>Severity</th>
+                        <th>Weather Date</th>
+                        <th>Affected Port</th>
+                    </tr>
+                </thead>
+                <tbody id="weather-tbody">
+                    <tr><td colspan="9" class="loading">Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Ranked Shipments -->
+        <div class="table-card">
+            <h2>Shipment Delay Rankings</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Global Rank</th>
+                        <th>Shipment ID</th>
+                        <th>Carrier</th>
+                        <th>Cargo</th>
+                        <th>Delay</th>
+                        <th>Route Rank</th>
+                    </tr>
+                </thead>
+                <tbody id="ranked-tbody">
+                    <tr><td colspan="6" class="loading">Loading ranked shipments...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="charts.js"></script>
+    <script>loadRiskAnalysis();</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — Supply Chain Risk Analysis</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="logo">Supply Chain <span>Risk Analysis</span></div>
+        <nav>
+            <a href="index.html" class="active">Dashboard</a>
+            <a href="shipments.html">Shipments</a>
+            <a href="risk.html">Risk Analysis</a>
+            <a href="add_shipment.html">Add Shipment</a>
+        </nav>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="page-header">
+            <h1>Dashboard</h1>
+            <p>Overview of shipment performance, delays, and carrier reliability</p>
+        </div>
+
+        <!-- Summary Metrics -->
+        <div class="metrics-row">
+            <div class="metric-card">
+                <h3>Total Shipments</h3>
+                <div class="value" id="metric-total">--</div>
+            </div>
+            <div class="metric-card danger">
+                <h3>High Risk</h3>
+                <div class="value" id="metric-highrisk">--</div>
+            </div>
+            <div class="metric-card warning">
+                <h3>Avg Delay</h3>
+                <div class="value"><span id="metric-avgdelay">--</span><span class="unit">hrs</span></div>
+            </div>
+            <div class="metric-card success">
+                <h3>Delivered</h3>
+                <div class="value" id="metric-delivered">--</div>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="charts-row">
+            <div class="chart-card">
+                <h2>Average Delay per Route</h2>
+                <canvas id="chart-route-delay"></canvas>
+            </div>
+            <div class="chart-card">
+                <h2>Carrier Performance — Delay vs Reliability</h2>
+                <canvas id="chart-carrier-perf"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="charts.js"></script>
+    <script>loadDashboard();</script>
+</body>
+</html>

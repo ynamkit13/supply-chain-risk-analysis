@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Shipment — Supply Chain Risk Analysis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="logo">Supply Chain <span>Risk Analysis</span></div>
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="shipments.html">Shipments</a>
+            <a href="risk.html">Risk Analysis</a>
+            <a href="add_shipment.html" class="active">Add Shipment</a>
+        </nav>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="page-header">
+            <h1>Add New Shipment</h1>
+            <p>Delay hours and risk flag are computed automatically by the database trigger</p>
+        </div>
+
+        <!-- Alerts -->
+        <div class="alert alert-success" id="alert-success"></div>
+        <div class="alert alert-error" id="alert-error"></div>
+
+        <!-- Form -->
+        <div class="form-card">
+            <h2>Shipment Details</h2>
+            <form id="add-shipment-form">
+                <div class="form-group">
+                    <label for="route_id">Route ID (1–20)</label>
+                    <input type="number" id="route_id" min="1" max="20" required placeholder="e.g. 1">
+                </div>
+
+                <div class="form-group">
+                    <label for="carrier_id">Carrier ID (1–10)</label>
+                    <input type="number" id="carrier_id" min="1" max="10" required placeholder="e.g. 1">
+                </div>
+
+                <div class="form-group">
+                    <label for="departure_date">Departure Date</label>
+                    <input type="date" id="departure_date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="arrival_date">Arrival Date</label>
+                    <input type="date" id="arrival_date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cargo_type">Cargo Type</label>
+                    <select id="cargo_type" required>
+                        <option value="">Select cargo type</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Machinery">Machinery</option>
+                        <option value="Textiles">Textiles</option>
+                        <option value="Automotive Parts">Automotive Parts</option>
+                        <option value="Perishable Goods">Perishable Goods</option>
+                        <option value="Chemicals">Chemicals</option>
+                        <option value="Furniture">Furniture</option>
+                        <option value="Raw Materials">Raw Materials</option>
+                        <option value="Pharmaceuticals">Pharmaceuticals</option>
+                        <option value="Consumer Goods">Consumer Goods</option>
+                        <option value="Food & Beverages">Food & Beverages</option>
+                        <option value="Plastics">Plastics</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="weight_kg">Weight (kg)</label>
+                    <input type="number" id="weight_kg" min="1" step="0.1" required placeholder="e.g. 8500">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Add Shipment</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="charts.js"></script>
+    <script>loadAddShipmentForm();</script>
+</body>
+</html>
