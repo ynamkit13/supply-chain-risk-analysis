@@ -53,14 +53,9 @@ BEGIN
         SET MESSAGE_TEXT = 'Shipment ID does not exist';
     END IF;
 
-    -- Transaction: update status (trigger auto-logs the change)
-    START TRANSACTION;
-
     UPDATE shipments
     SET current_status = p_new_status
     WHERE shipment_id = p_shipment_id;
-
-    COMMIT;
 END$$
 
 DELIMITER ;
