@@ -3,7 +3,7 @@ import mysql.connector
 DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
-    'password': '',  # Set your MySQL password here
+    'password': 'root1234',
     'database': 'supply_chain_db'
 }
 

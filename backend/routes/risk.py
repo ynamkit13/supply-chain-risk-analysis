@@ -27,18 +27,7 @@ def get_ranked_shipments():
     conn = get_connection()
     cursor = conn.cursor(dictionary=True)
     try:
-        cursor.execute("""
-            SELECT s.shipment_id, s.route_id, s.carrier_id,
-                   c.carrier_name, s.actual_delay_hours, s.cargo_type,
-                   RANK() OVER (ORDER BY s.actual_delay_hours DESC) AS delay_rank,
-                   DENSE_RANK() OVER (
-                       PARTITION BY s.route_id
-                       ORDER BY s.actual_delay_hours DESC
-                   ) AS route_rank
-            FROM shipments s
-            JOIN carriers c ON s.carrier_id = c.carrier_id
-            ORDER BY delay_rank
-        """)
+        cursor.execute("SELECT * FROM vw_ranked_shipments")
         rows = cursor.fetchall()
         return jsonify(rows), 200
     finally:

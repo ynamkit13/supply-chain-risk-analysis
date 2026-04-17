@@ -94,6 +94,28 @@ WHERE s.actual_delay_hours > (
 ORDER BY s.actual_delay_hours DESC;
 
 -- ============================================================
+-- View: Ranked shipments by delay (Window Functions)
+-- Global RANK across all shipments + per-route DENSE_RANK
+-- ============================================================
+
+CREATE VIEW vw_ranked_shipments AS
+SELECT
+    s.shipment_id,
+    s.route_id,
+    s.carrier_id,
+    c.carrier_name,
+    s.actual_delay_hours,
+    s.cargo_type,
+    RANK() OVER (ORDER BY s.actual_delay_hours DESC) AS delay_rank,
+    DENSE_RANK() OVER (
+        PARTITION BY s.route_id
+        ORDER BY s.actual_delay_hours DESC
+    ) AS route_rank
+FROM shipments s
+JOIN carriers c ON s.carrier_id = c.carrier_id
+ORDER BY delay_rank;
+
+-- ============================================================
 -- View: Weather and delay correlation (Subquery + Aggregation)
 -- Links weather events at origin/destination ports near the
 -- departure window to shipment delays

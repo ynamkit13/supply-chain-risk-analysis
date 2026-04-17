@@ -58,18 +58,7 @@ CREATE TABLE shipments (
 );
 
 -- ============================================================
--- Table 5: port_congestion
--- ============================================================
-CREATE TABLE port_congestion (
-    congestion_id INT AUTO_INCREMENT PRIMARY KEY,
-    port_id INT NOT NULL,
-    congestion_level INT CHECK (congestion_level >= 1 AND congestion_level <= 10),
-    recorded_date DATE NOT NULL,
-    FOREIGN KEY (port_id) REFERENCES ports(port_id)
-);
-
--- ============================================================
--- Table 6: weather_conditions
+-- Table 5: weather_conditions
 -- ============================================================
 CREATE TABLE weather_conditions (
     weather_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -81,7 +70,7 @@ CREATE TABLE weather_conditions (
 );
 
 -- ============================================================
--- Table 7: shipment_status_logs
+-- Table 6: shipment_status_logs
 -- ============================================================
 CREATE TABLE shipment_status_logs (
     log_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -96,7 +85,6 @@ CREATE TABLE shipment_status_logs (
 -- ============================================================
 CREATE INDEX idx_shipments_route_id ON shipments(route_id);
 CREATE INDEX idx_shipments_carrier_id ON shipments(carrier_id);
-CREATE INDEX idx_port_congestion_port_id ON port_congestion(port_id);
 CREATE INDEX idx_weather_conditions_port_id ON weather_conditions(port_id);
 CREATE INDEX idx_status_logs_shipment_id ON shipment_status_logs(shipment_id);
 

@@ -15,18 +15,8 @@ CREATE PROCEDURE sp_add_shipment(
     IN p_weight_kg FLOAT
 )
 BEGIN
-    DECLARE v_shipment_id INT;
-
-    -- Insert into shipments (trigger auto-computes delay fields)
     INSERT INTO shipments (route_id, carrier_id, departure_date, arrival_date, current_status, cargo_type, weight_kg)
     VALUES (p_route_id, p_carrier_id, p_departure_date, p_arrival_date, 'In Transit', p_cargo_type, p_weight_kg);
-
-    -- Get the newly inserted shipment ID
-    SET v_shipment_id = LAST_INSERT_ID();
-
-    -- Log the initial status
-    INSERT INTO shipment_status_logs (shipment_id, status)
-    VALUES (v_shipment_id, 'In Transit');
 END$$
 
 DELIMITER ;

@@ -1,6 +1,6 @@
 # Advanced Supply Chain Risk Analysis System
 
-A full-stack supply chain risk analysis system that integrates shipment data with routes, ports, weather conditions, port congestion, and tracking logs to automatically detect risks, analyze delay causes, rank performance, and provide dashboard insights.
+A full-stack supply chain risk analysis system that integrates shipment data with routes, ports, weather conditions, and tracking logs to automatically detect risks, analyze delay causes, rank performance, and provide dashboard insights.
 
 ## Tech Stack
 
@@ -33,9 +33,7 @@ A full-stack supply chain risk analysis system that integrates shipment data wit
 | `carriers` | 10 real shipping lines with reliability scores |
 | `routes` | 20 real sea routes with distances and expected durations |
 | `shipments` | Shipment records with auto-computed delay fields |
-| `port_congestion` | Port congestion levels with dates |
 | `weather_conditions` | Weather events with severity levels |
-| `shipment_status_logs` | Full lifecycle tracking per shipment |
 
 ### SQL Concepts Used
 
@@ -160,4 +158,4 @@ All sample data is based on real-world shipping data:
 - **Routes** — 20 actual sea routes with real distances via Suez/Panama canals
 - **Weather** — Seasonal patterns (typhoons Jul-Oct in Asia, North Sea storms Nov-Mar, monsoons May-Sep)
 - **Congestion** — Real documented events (LA/Long Beach COVID crisis, Shanghai lockdowns, Red Sea diversions)
-- **Shipments** — 35 shipments with ~60% on-time and ~40% delayed, correlated with weather/congestion events
+- **Shipments** — 35 shipments with ~60% on-time and ~40% delayed, correlated with weather events

@@ -35,21 +35,3 @@ END$$
 
 DELIMITER ;
 
--- ============================================================
--- Trigger: Auto-log status changes on UPDATE
--- When current_status is changed, log it automatically
--- ============================================================
-
-DELIMITER $$
-
-CREATE TRIGGER trg_log_status_update
-AFTER UPDATE ON shipments
-FOR EACH ROW
-BEGIN
-    IF OLD.current_status <> NEW.current_status THEN
-        INSERT INTO shipment_status_logs (shipment_id, status)
-        VALUES (NEW.shipment_id, NEW.current_status);
-    END IF;
-END$$
-
-DELIMITER ;
